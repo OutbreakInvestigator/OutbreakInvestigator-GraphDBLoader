@@ -2,7 +2,7 @@ Setting Up Dev Environment (Windows OS)
 GitHub
 1. Install GitHub App (windows and Mac)
 2. Clone from
-https://github.com/OutbreakInvestigator/OutbreakInvestigator-GraphDBLoader.git
+https://github.com/UW-EpiData/OutbreakInvestigator-GraphDBLoader.git
  
 
 
