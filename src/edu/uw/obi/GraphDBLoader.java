@@ -20,6 +20,7 @@ import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.util.io.graphson.GraphSONWriter;
 
 import edu.uw.obi.publichealth.PersistentPublicHealthGraph;
+import java.util.Properties;
 
 public class GraphDBLoader
 {
@@ -284,9 +285,11 @@ public class GraphDBLoader
 	 */
 	public static void main(String[] args)
 	{
+                Properties props = System.getProperties();
+                props.setProperty("storage.keepOpen", "false");
 		PersistentPublicHealthGraph graph = null;
 		try {
-                        graph = new PersistentPublicHealthGraph("local:F:/RO1/graphdbfromrelationaldb/TinkerPopTest/graph_db/synth");
+                        graph = new PersistentPublicHealthGraph("local:./graph_db/synth");
 			graph.setUseLightweightEdges(false);
 			
 			GraphDBLoader test = new GraphDBLoader(graph);
@@ -328,7 +331,10 @@ public class GraphDBLoader
                 {
                     e.printStackTrace();
 		}finally{
-		  graph.shutdown();
+                    if(graph != null){
+                        graph.shutdown();
+                        System.out.println("graph db shutdown.");
+                    }
 		}
 
 	}
